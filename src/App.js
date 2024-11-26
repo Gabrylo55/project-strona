@@ -37,25 +37,27 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Prognoza pogody</h1>
+      <h1 className="title">Prognoza pogody</h1>
 
       <input
         type="text"
         value={city}
         onChange={handleCityChange}
         placeholder="Wpisz nazwę miasta"
+        className="city-input"
       />
 
-      {loading && <p>Ładowanie...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {loading && <p className="loading-text">Ładowanie...</p>}
+      {error && <p className="error-text">{error}</p>}
 
       {weather && !loading && !error && (
-        <div>
-          <h2>Pogoda w {weather.name}</h2>
-          <p>Temperatura: {weather.main.temp}°C</p>
-          <p>Wilgotność: {weather.main.humidity}%</p>
-          <p>Opis: {weather.weather[0].description}</p>
+        <div className="weather-info">
+          <h2 className="city-name">Pogoda w {weather.name}</h2>
+          <p className="weather-detail">Temperatura: {weather.main.temp}°C</p>
+          <p className="weather-detail">Wilgotność: {weather.main.humidity}%</p>
+          <p className="weather-detail">Opis: {weather.weather[0].description}</p>
           <img
+            className="weather-icon"
             src={`https://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
             alt={weather.weather[0].description}
           />
